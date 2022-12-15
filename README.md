@@ -13,5 +13,5 @@ cmake ..
 make
 ```
 
-and the binary file can be found in the folder `tst`.
+and the binary file can be found in the folder `build/tst`.
 
