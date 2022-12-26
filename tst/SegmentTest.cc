@@ -49,4 +49,28 @@ TEST(SegmentTest, testHashCannotFind) {
     EXPECT_TRUE(st.find(s2) == st.end());
 }
 
+TEST(SegmentTest, testFullyContains) {
+    Segment s1(2, 8);
+    Segment s2(3, 7);
+
+    EXPECT_TRUE(s1.fully_contains(s2));
+    EXPECT_FALSE(s2.fully_contains(s1));
+}
+
+TEST(SegmentTest, testFullyContainsTwo) {
+    Segment s1(6, 6);
+    Segment s2(4, 6);
+
+    EXPECT_FALSE(s1.fully_contains(s2));
+    EXPECT_TRUE(s2.fully_contains(s1));
+}
+
+TEST(SegmentTest, testFullyContainsWithInvalidSegments) {
+    Segment s1(2, 8);
+    Segment s2(7, 3);
+
+    EXPECT_FALSE(s1.fully_contains(s2));
+    EXPECT_FALSE(s2.fully_contains(s1));
+}
+
 }}

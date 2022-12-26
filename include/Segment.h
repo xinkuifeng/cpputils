@@ -26,6 +26,13 @@ struct Segment {
     bool operator!=(const Segment & other) const {
         return low != other.low || high != other.high;
     }
+
+    bool fully_contains(const Segment & other) const {
+        if (valid() && other.valid()) {
+            return low <= other.low && high >= other.high;
+        }
+        return false;
+    }
 };
 
 std::ostream & operator<<(std::ostream & os, const Segment & s) {
