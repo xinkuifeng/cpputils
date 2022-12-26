@@ -33,6 +33,16 @@ struct Segment {
         }
         return false;
     }
+
+    bool overlap(const Segment & other) const {
+        if (valid() && other.valid()) {
+            if (  (low >= other.low && low <= other.high)
+               || (other.low >= low && other.low <= high)) {
+                return true;
+            }
+        }
+        return false;
+    }
 };
 
 std::ostream & operator<<(std::ostream & os, const Segment & s) {

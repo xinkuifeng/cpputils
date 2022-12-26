@@ -73,4 +73,36 @@ TEST(SegmentTest, testFullyContainsWithInvalidSegments) {
     EXPECT_FALSE(s2.fully_contains(s1));
 }
 
+TEST(SegmentTest, testOverlapCaseOne) {
+    Segment s1(2, 6);
+    Segment s2(4, 8);
+
+    EXPECT_TRUE(s1.overlap(s2));
+    EXPECT_TRUE(s2.overlap(s1));
+}
+
+TEST(SegmentTest, testOverlapCaseTwo) {
+    Segment s1(2, 8);
+    Segment s2(3, 7);
+
+    EXPECT_TRUE(s1.overlap(s2));
+    EXPECT_TRUE(s2.overlap(s1));
+}
+
+TEST(SegmentTest, testOverlapCaseThree) {
+    Segment s1(6, 6);
+    Segment s2(4, 6);
+
+    EXPECT_TRUE(s1.overlap(s2));
+    EXPECT_TRUE(s2.overlap(s1));
+}
+
+TEST(SegmentTest, testNoOverlap) {
+    Segment s1(2, 3);
+    Segment s2(4, 5);
+
+    EXPECT_FALSE(s1.overlap(s2));
+    EXPECT_FALSE(s2.overlap(s1));
+}
+
 }}
