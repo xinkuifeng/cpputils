@@ -29,6 +29,18 @@ inline std::vector<int> parse_int(std::string line, bool negative = false) {
     return res;
 }
 
+inline std::vector<std::string> split(const std::string line, char c) {
+    std::stringstream ss(line);
+    std::vector<std::string> res;
+    std::string item;
+
+    while (std::getline(ss, item, c)) {
+        if (!item.empty()) res.emplace_back(item);
+    }
+
+    return res;
+}
+
 }
 
 #endif
