@@ -51,6 +51,21 @@ std::ostream & operator<<(std::ostream & os, const Point & p) {
     return os;
 }
 
+bool is_adjacent_4(const Point & p1, const Point & p2) {
+    int diff_x = std::abs(p1.x - p2.x);
+    int diff_y = std::abs(p1.y - p2.y);
+    int dist = diff_x + diff_y;
+
+    return dist <= 1;
+}
+
+bool is_adjacent_8(const Point & p1, const Point & p2) {
+    int diff_x = std::abs(p1.x - p2.x);
+    int diff_y = std::abs(p1.y - p2.y);
+
+    return diff_x <= 1 && diff_y <= 1;
+}
+
 }
 
 namespace std {

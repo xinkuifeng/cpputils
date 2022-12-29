@@ -64,4 +64,68 @@ TEST(PointTest, testHashCannotFind) {
     EXPECT_TRUE(st.find(p2) == st.end());
 }
 
+TEST(PointTest, testAdjacencyUp) {
+    Point p1(0, 0);
+    Point p2(0, 1);
+
+    EXPECT_TRUE(is_adjacent_4(p1, p2));
+    EXPECT_TRUE(is_adjacent_8(p1, p2));
+}
+
+TEST(PointTest, testAdjacencyDown) {
+    Point p1(0, 0);
+    Point p2(0, -1);
+
+    EXPECT_TRUE(is_adjacent_4(p1, p2));
+    EXPECT_TRUE(is_adjacent_8(p1, p2));
+}
+
+TEST(PointTest, testAdjacencyLeft) {
+    Point p1(0, 0);
+    Point p2(-1, 0);
+
+    EXPECT_TRUE(is_adjacent_4(p1, p2));
+    EXPECT_TRUE(is_adjacent_8(p1, p2));
+}
+
+TEST(PointTest, testAdjacencyRight) {
+    Point p1(0, 0);
+    Point p2(1, 0);
+
+    EXPECT_TRUE(is_adjacent_4(p1, p2));
+    EXPECT_TRUE(is_adjacent_8(p1, p2));
+}
+
+TEST(PointTest, testAdjacencyUpLeft) {
+    Point p1(0, 0);
+    Point p2(-1, 1);
+
+    EXPECT_FALSE(is_adjacent_4(p1, p2));
+    EXPECT_TRUE(is_adjacent_8(p1, p2));
+}
+
+TEST(PointTest, testAdjacencyUpRight) {
+    Point p1(0, 0);
+    Point p2(1, 1);
+
+    EXPECT_FALSE(is_adjacent_4(p1, p2));
+    EXPECT_TRUE(is_adjacent_8(p1, p2));
+}
+
+TEST(PointTest, testAdjacencyDownLeft) {
+    Point p1(0, 0);
+    Point p2(-1, -1);
+
+    EXPECT_FALSE(is_adjacent_4(p1, p2));
+    EXPECT_TRUE(is_adjacent_8(p1, p2));
+}
+
+TEST(PointTest, testAdjacencyDownRight) {
+    Point p1(0, 0);
+    Point p2(1, -1);
+
+    EXPECT_FALSE(is_adjacent_4(p1, p2));
+    EXPECT_TRUE(is_adjacent_8(p1, p2));
+}
+
 }}
