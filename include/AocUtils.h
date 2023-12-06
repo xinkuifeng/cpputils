@@ -29,6 +29,26 @@ inline std::vector<int> parse_int(std::string line, bool negative = false) {
     return res;
 }
 
+inline std::vector<long> parse_long(std::string line, bool negative = false) {
+    std::stringstream ss;
+    ss << "(";
+    if (negative) {
+        ss << "[-]?";
+    }
+    ss << "\\d+" << ")";
+
+    std::regex r(ss.str());
+    std::smatch sm;
+    std::vector<long> res;
+    while (std::regex_search(line, sm, r))
+    {
+        long n = std::stol(sm.str());
+        res.push_back(n);
+        line = sm.suffix();
+    }
+    return res;
+}
+
 inline std::vector<std::string> split(const std::string line, char c) {
     std::stringstream ss(line);
     std::vector<std::string> res;
